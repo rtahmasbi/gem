@@ -1,6 +1,11 @@
 # GEM
 golang, bazel, gazelle
 
+## git
+```
+git clone https://github.com/rtahmasbi/gem.git
+```
+
 ## Installation
 
 ### Linux

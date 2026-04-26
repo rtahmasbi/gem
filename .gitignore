@@ -1,0 +1,20 @@
+# Bazel
+bazel-*
+
+# Go
+*.exe
+*.test
+*.out
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.DS_Store
