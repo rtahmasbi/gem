@@ -53,6 +53,7 @@ This repo uses **Bazel** as the primary build system with Gazelle for BUILD file
 ```bash
 # Run a component
 bazel run //opal:opal
+bazel run //opal/ex1     # Example 1 
 bazel run //quartz:quartz
 
 # Build

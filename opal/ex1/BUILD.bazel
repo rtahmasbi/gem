@@ -1,0 +1,14 @@
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "ex1_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/rtahmasbi/gem/opal/ex1",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "ex1",
+    embed = [":ex1_lib"],
+    visibility = ["//visibility:public"],
+)
