@@ -44,3 +44,30 @@ brew install bazelisk
 go version
 bazel version
 ```
+
+
+## Build System
+
+This repo uses **Bazel** as the primary build system with Gazelle for BUILD file generation.
+
+```bash
+# Run a component
+bazel run //opal:opal
+bazel run //quartz:quartz
+
+# Build
+bazel build //...
+
+# Test
+bazel test //...
+
+# Regenerate BUILD files after adding/moving Go or Python files
+bazel run :gazelle
+
+# Update Python requirements lock file
+bazel run :requirements.update
+
+# Validate requirements lockfile is in sync
+bazel test :requirements_test
+```
+
