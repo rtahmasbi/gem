@@ -1,0 +1,18 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+load("@rules_python//python:pip.bzl", "compile_pip_requirements")
+
+
+gazelle(name = "gazelle")
+
+
+# To validate that the files are in sync,
+#   bazel test :requirements_test
+# If we add new deps and need to update the lock file
+#   bazel run :requirements.update
+compile_pip_requirements(
+    name = "requirements",
+    extra_args = ["--allow-unsafe"],
+    requirements_in = "requirements.txt",
+    requirements_txt = "requirements_lock.txt",
+)
+

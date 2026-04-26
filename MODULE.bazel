@@ -1,0 +1,30 @@
+module(
+    name = "gem",
+    version = "0.0.0",
+)
+
+# ── Go ───────────────────────────────────────────────────────────────────────
+bazel_dep(name = "rules_go", version = "0.46.0")
+bazel_dep(name = "bazel_gazelle", version = "0.37.0")
+
+go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk")
+go_sdk.download(version = "1.25.0")
+
+go_deps = use_extension("@bazel_gazelle//:extensions.bzl", "go_deps")
+go_deps.from_file(go_mod = "//:go.mod")
+# Run `bazel mod tidy` after changing go.mod to refresh use_repo entries below.
+
+# ── Python ───────────────────────────────────────────────────────────────────
+bazel_dep(name = "rules_python", version = "0.36.0")
+
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python.toolchain(python_version = "3.11")
+use_repo(python, "python_3_11")
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
+    hub_name = "pip",
+    python_version = "3.11",
+    requirements_lock = "//:requirements_lock.txt",
+)
+use_repo(pip, "pip")
