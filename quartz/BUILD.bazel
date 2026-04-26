@@ -3,6 +3,7 @@ load("@rules_python//python:defs.bzl", "py_binary", "py_library", "py_test")
 py_binary(
     name = "quartz",
     srcs = ["main.py"],
+    main = "main.py",
     python_version = "PY3",
     deps = [
         # Add @pip//package_name entries here, or run `bazel run :gazelle`
