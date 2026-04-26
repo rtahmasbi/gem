@@ -57,17 +57,27 @@ bazel run //quartz:quartz
 
 # Build
 bazel build //...
+# all targets under the opal/ package tree.
+bazel build //opal/... 
+# just opal target under the opal/ package tree
+bazel build //opal:opal 
+
 
 # Test
 bazel test //...
 
 # Regenerate BUILD files after adding/moving Go or Python files
 bazel run :gazelle
+# directory (and its subdirectories)
+bazel run :gazelle -- update opal/
 
 # Update Python requirements lock file
 bazel run :requirements.update
 
 # Validate requirements lockfile is in sync
 bazel test :requirements_test
+
+# use `go mod tidy` to update `go.mod` and `go.sum`
+go mod tidy
 ```
 
