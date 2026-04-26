@@ -1,7 +1,14 @@
-load("@rules_go//go:def.bzl", "go_binary")
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
 
 go_binary(
     name = "opal",
-    srcs = ["main.go"],
+    embed = [":opal_lib"],
     visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "opal_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/rtahmasbi/gem/opal",
+    visibility = ["//visibility:private"],
 )
